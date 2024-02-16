@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TableInfoViewModel>
+@{
+    ViewBag.Title = "All of the tables in the restaurant";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var e in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+            <div class="card-body">
+                <h5 class="card-title mt-1">Table of @e.NumberOfSeats</h5>
+                <p class="mb-0"><span class="fw-bold">Is Smoking Allowed </span>@e.IsSmokingAllowed</p>
+            </div>
+            
+            <form class="input-group-sm " asp-controller="Restaurant" asp-action="Reserve" asp-route-id="@e.Id">
+                <input type="submit" value="Reserve Table" class="fs-6 btn btn-warning mb-3 w-100 p-3 fw-bold" />
+            </form>
+            
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
