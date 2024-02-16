@@ -4,5 +4,40 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+	<h1>Stats</h1>
+	<div class="container">
+
+		<div class="row">
+
+			<div class="four col-md-3">
+				<div class="counter-box colored">
+					<i class="fa fa-thumbs-o-up"></i>
+					<span class="counter">@ViewData["CustomersCount"]</span>
+					<p>Reservations</p>
+				</div>
+			</div>
+			<div class="four col-md-3">
+				<div class="counter-box">
+					<i class="fa fa-group"></i>
+					<span class="counter">@ViewData["TablesCount"]</span>
+					<p>Tables</p>
+				</div>
+			</div>
+			<div class="four col-md-3">
+				<div class="counter-box">
+					<i class="fa  fa-shopping-cart"></i>
+					<span class="counter">@ViewData["FinishedReservations"]</span>
+					<p>Finished Reservations</p>
+				</div>
+			</div>
+			<div class="four col-md-3">
+				<div class="counter-box">
+					<i class="fa  fa-user"></i>
+					<span class="counter">@ViewData["UpcomingReservations"]</span>
+					<p>Upcoming Reservations</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

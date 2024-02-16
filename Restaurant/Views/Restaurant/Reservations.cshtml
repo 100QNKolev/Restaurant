@@ -1,6 +1,6 @@
-﻿@model IEnumerable<TableInfoViewModel>
+﻿@model IEnumerable<ReservationViewModel>
 @{
-    ViewBag.Title = "All of the tables in the restaurant";
+    ViewBag.Title = "All of the reservations";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
@@ -14,10 +14,11 @@
                 <h5 class="card-title mt-1">Table No_ @e.Id</h5>
                 <p class="mb-0"><span class="fw-bold">Table of </span>@e.NumberOfSeats</p>
                 <p class="mb-0"><span class="fw-bold">Is Smoking Allowed </span>@e.IsSmokingAllowed</p>
+                <p class="mb-0"><span class="fw-bold">Customer </span>@e.FirstName @e.LastName</p>
+                <p class="mb-0"><span class="fw-bold">Start: </span>@e.Start </p>
+                <p class="mb-0"><span class="fw-bold">End: </span>@e.End</p>
             </div>
 
-            <a asp-controller="Restaurant" asp-action="Reserve" asp-route-id="@e.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Reserve</a>
-            
         </div>
     }
 </div>

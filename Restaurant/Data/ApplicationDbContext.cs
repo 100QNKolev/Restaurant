@@ -57,7 +57,5 @@ namespace Restaurant.Data
 
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<Restaurant.Models.TableInfoViewModel>? TableInfoViewModel { get; set; }
     }
 }

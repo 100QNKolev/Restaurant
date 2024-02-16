@@ -6,9 +6,6 @@ namespace Restaurant.Data
     public class Reservation
     {
         [Required]
-        public int Id { get; set; }
-
-        [Required]
         public int CustomerId { get; set; }
 
         [ForeignKey(nameof(CustomerId))]
@@ -21,7 +18,10 @@ namespace Restaurant.Data
         public Table Table { get; set; } = null!;
 
         [Required]
-        public DateTime ReservationTime { get; set; }
+        public DateTime Start { get; set; }
+
+        [Required]
+        public DateTime End { get; set; }
 
         [Required]
         public string Description { get; set; } = string.Empty;

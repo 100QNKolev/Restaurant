@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Restaurant.Data;
 using Restaurant.Models;
 using System.Diagnostics;
 
@@ -6,16 +7,34 @@ namespace Restaurant.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+		private readonly ApplicationDbContext _context;
+		private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            int tablesCount = _context.Tables
+                .Count();
+			int customersCount = _context.Customers
+				.Count();
+            int finishedReservations = _context.Reservations
+                .Where(r => DateTime.Now > r.End)
+                .Count();
+            int upcomingReservations = _context.Reservations
+				.Where(r => r.Start > DateTime.Now || DateTime.Now < r.End)
+				.Count();
+
+			ViewData["TablesCount"] = tablesCount;
+			ViewData["CustomersCount"] = customersCount;
+			ViewData["FinishedReservations"] = finishedReservations;
+			ViewData["UpcomingReservations"] = upcomingReservations;
+
+			return View();
         }
 
         public IActionResult Privacy()
